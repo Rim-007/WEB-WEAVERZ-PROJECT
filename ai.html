@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obsidian Learning Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 600px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            margin-bottom: 20px;
+            resize: none;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .results {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .result {
+            padding: 10px;
+            background-color: #f0f0f0;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Obsidian Learning Tool</h1>
+    <p>Input your notes or text below to analyze and get useful insights.</p>
+    
+    <textarea id="userInput" placeholder="Enter text or notes here..."></textarea>
+    <button onclick="analyzeText()">Analyze Notes</button>
+
+    <div class="results" id="results"></div>
+</div>
+
+<script>
+    function analyzeText() {
+        const inputText = document.getElementById('userInput').value;
+        const resultsDiv = document.getElementById('results');
+        
+        if (inputText.trim() === "") {
+            resultsDiv.innerHTML = "<p>Please enter some text or notes to analyze.</p>";
+            return;
+        }
+        
+        // Perform basic analysis
+        const wordCount = countWords(inputText);
+        const charCount = inputText.length;
+        const keywordAnalysis = analyzeKeywords(inputText, ["learning", "study", "AI", "analysis", "Obsidian"]);
+
+        // Display results
+        resultsDiv.innerHTML = `
+            <div class="result"><strong>Word Count:</strong> ${wordCount}</div>
+            <div class="result"><strong>Character Count:</strong> ${charCount}</div>
+            <div class="result"><strong>Keywords Detected:</strong> ${keywordAnalysis.length ? keywordAnalysis.join(", ") : "None"}</div>
+        `;
+    }
+
+    // Function to count words
+    function countWords(text) {
+        const words = text.trim().split(/\s+/);
+        return words.length;
+    }
+
+    // Function to detect specific keywords
+    function analyzeKeywords(text, keywords) {
+        const detected = [];
+        keywords.forEach(keyword => {
+            if (text.toLowerCase().includes(keyword.toLowerCase())) {
+                detected.push(keyword);
+            }
+        });
+        return detected;
+    }
+</script>
+
+</body>
+</html>

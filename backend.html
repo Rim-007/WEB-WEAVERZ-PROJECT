@@ -1,0 +1,50 @@
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.use(express.static('public')); // Serve static files from "public" folder
+
+// Home route
+app.get('/', (req, res) => {
+    res.send('Welcome to Obsidian Learning!');
+});
+
+// Courses route
+app.get('/courses', (req, res) => {
+    res.send('List of available courses...');
+});
+
+// Contact route
+app.get('/contact', (req, res) => {
+    res.send('Contact form and details...');
+});
+
+// Start server
+app.listen(port, () => {
+    console.log(Server is running on http://localhost:${port});
+});
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.use(express.static('public')); // Serve static files from "public" folder
+
+// Home route
+app.get('/', (req, res) => {
+    res.send('Welcome to Obsidian Learning!');
+});
+
+// Courses route
+app.get('/courses', (req, res) => {
+    res.send('List of available courses...');
+});
+
+// Contact route
+app.get('/contact', (req, res) => {
+    res.send('Contact form and details...');
+});
+
+// Start server
+app.listen(port, () => {
+    console.log(Server is running on http://localhost:${port});
+});
