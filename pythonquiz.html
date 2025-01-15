@@ -61,7 +61,7 @@
 
 <div class="quiz-container">
     <h2>Python Quiz - Page 1</h2>
-    <form action="page2.html" method="get">
+    <form action="results.html" method="get">
         <div class="question">
             <h3>1. What is the correct syntax to output "Hello, World" in Python?</h3>
             <div class="options">
@@ -112,6 +112,36 @@
         </div>
     </form>
 </div>
+<script>
+    document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault();
 
+        const score = calculateScore();
+        const date = formatDate(new Date());
+
+        let quizResults = JSON.parse(localStorage.getItem('quizResults')) || [];
+        quizResults.push({ date: date, subject: 'Python Quiz', score: score });
+        localStorage.setItem('quizResults', JSON.stringify(quizResults));
+
+        this.submit();
+    });
+
+    function calculateScore() {
+        const correctAnswers = ['b', 'c', 'b', 'b', 'c'];
+        let score = 0;
+        correctAnswers.forEach((answer, index) => {
+            const userAnswer = document.querySelector(`input[name=q${index + 1}]:checked`);
+            if (userAnswer && userAnswer.value === answer) {
+                score += 1;
+            }
+        });
+        return (score / correctAnswers.length) * 100;
+    }
+
+    function formatDate(date) {
+        const options = { month: 'long', day: 'numeric', year: 'numeric'};
+        return date.toLocaleDateString('en-US', options);
+    }
+</script>
 </body>
 </html>
