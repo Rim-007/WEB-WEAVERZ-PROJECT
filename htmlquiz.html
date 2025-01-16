@@ -60,8 +60,9 @@
 <body>
 
 <div class="quiz-container">
+    <a href="home.html">HOME</a>
     <h2>HTML and CSS Quiz - Page 1</h2>
-    <form action="Result.html" method="get">
+    <form action="results.html" method="get">
         <div class="question">
             <h3>1. What does HTML stand for?</h3>
             <div class="options">
@@ -112,6 +113,47 @@
         </div>
     </form>
 </div>
-
+<script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const results = {
+            q1: document.querySelector('input[name="q1"]:checked') ? document.querySelector('input[name="q1"]:checked').value : '',
+            q2: document.querySelector('input[name="q2"]:checked') ? document.querySelector('input[name="q2"]:checked').value : '',
+            q3: document.querySelector('input[name="q3"]:checked') ? document.querySelector('input[name="q3"]:checked').value : '',
+            q4: document.querySelector('input[name="q4"]:checked') ? document.querySelector('input[name="q4"]:checked').value : '',
+            q5: document.querySelector('input[name="q5"]:checked') ? document.querySelector('input[name="q5"]:checked').value : '',
+        };
+        
+        let score = 0;
+        if (results.q1 === 'a') score++;
+        if (results.q2 === 'b') score++;
+        if (results.q3 === 'a') score++;
+        if (results.q4 === 'b') score++;
+        if (results.q5 === 'a') score++;
+        
+        const percentageScore = (score / 5) * 100;
+        
+        const date = new Date();
+        const formattedDate = `${date.toLocaleString('default', { month: 'long' })} ${date.getDate()}${getDaySuffix(date.getDate())}, ${date.getFullYear()}`;
+        
+        const quizResult = { date: formattedDate, score: percentageScore };
+        
+        let quizResults = JSON.parse(localStorage.getItem('quizResults')) || [];
+        quizResults.push(quizResult);
+        localStorage.setItem('quizResults', JSON.stringify(quizResults));
+        
+        window.location.href = 'results.html';
+    });
+    
+    function getDaySuffix(day) {
+        if (day > 3 && day < 21) return 'th';
+        switch (day % 10) {
+            case 1:  return "st";
+            case 2:  return "nd";
+            case 3:  return "rd";
+            default: return "th";
+        }
+    }
+    </script>
 </body>
 </html>
