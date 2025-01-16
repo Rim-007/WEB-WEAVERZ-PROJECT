@@ -103,27 +103,11 @@
 <body>
 
 <header>
-    <h1>Obsidian Learning Results</h1>
+    <h1>Your Results</h1>
+    <a href="home.html">HOME</a>
 </header>
 
 <div class="container">
-    <h2>Learning Progress</h2>
-    
-    <div class="result-item">
-        <span>Date: December 20, 2024</span>
-        <span>Score: 90%</span>
-    </div>
-
-    <div class="result-item">
-        <span>Date: December 19, 2024</span>
-        <span>Score: 85%</span>
-    </div>
-
-    <div class="result-item">
-        <span>Date: December 18, 2024</span>
-        <span>Score: 88%</span>
-    </div>
-
     <h2>Results Table</h2>
     <table class="results-table">
         <thead>
@@ -134,20 +118,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>December 20, 2024</td>
-                <td>Mathematics</td>
-                <td>90%</td>
-            </tr>
-            <tr>
-                <td>December 19, 2024</td>
-                <td>Science</td>
-                <td>85%</td>
-            </tr>
-            <tr>
-                <td>December 18, 2024</td>
-                <td>History</td>
-                <td>88%</td>
+    
             </tr>
         </tbody>
     </table>
@@ -166,6 +137,31 @@
 document.getElementById('exportBtn').addEventListener('click', function() {
     alert('Export functionality is not implemented yet!');
 });
+
+            document.addEventListener('DOMContentLoaded', function() {
+                const quizResults = JSON.parse(localStorage.getItem('quizResults')) || [];
+                const resultsTableBody = document.querySelector('.results-table tbody');
+                const resultsList = document.querySelector('.container');
+                
+                quizResults.forEach(result => {
+                    const resultRow = document.createElement('tr');
+                    resultRow.innerHTML = `
+                        <td>${result.date}</td>
+                        <td>${result.subject || 'HTML & CSS Quiz'}</td>
+                        <td>${result.score}%</td>
+                    `;
+                    resultsTableBody.appendChild(resultRow);
+                    
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'result-item';
+                    resultItem.innerHTML = `
+                        <span>Date: ${result.date}</span>
+                        <span>Subject: ${result.subject || 'HTML & CSS Quiz'}</span>
+                        <span>Score: ${result.score}%</span>
+                    `;
+                    resultsList.appendChild(resultItem);
+                });
+            });
 </script>
 
 </body>
