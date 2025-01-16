@@ -3,89 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Coding Courses - Obsidian Learning</title>
-    
+    <title>JavaScript Quiz - Page 1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            font-family: 'Roboto', sans-serif;
+            background: #f5f5f5;
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200vh;
+            color: #333;
         }
-        header {
-            background-color: #6899d8;
-            color: white;
-            padding: 20px;
+        .quiz-container {
+            background-color: #fff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h2 {
+            color: #6a11cb;
             text-align: center;
         }
-        header h1 {
-            margin: 0;
+        .question {
+            margin-bottom: 20px;
         }
-        .container {
-            padding: 20px;
+        .question h3 {
+            margin: 0 0 10px 0;
         }
-        .course-list {
-            list-style-type: none;
-            padding: 0;
+        .options label {
+            display: block;
+            margin-bottom: 10px;
         }
-        .course-list li {
-            background-color: #ffffff;
-            border: 1px solid #ddd;
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        .button-container {
+            display: flex;
+            justify-content: space-between;
         }
-        .course-list a {
-            color: #2a2a72;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .course-list a:hover {
-            text-decoration: underline;
-        }
-        footer {
-            background-color: #2a2a72;
+        button {
+            padding: 10px 20px;
+            background-color: #6a11cb;
             color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #5b0fb2;
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Obsidian Learning: Coding Courses</h1>
-    <p>Your Hub for Learning Coding and Programming Skills</p>
+<div class="quiz-container">
     <a href="home.html">HOME</a>
-</header>
+    <h2>JavaScript Quiz - Page 1</h2>
+    <form action="results.html" method="get">
+        <div class="question">
+            <h3>1. Which company developed JavaScript?</h3>
+            <div class="options">
+                <label><input type="radio" name="q1" value="a"> Microsoft</label>
+                <label><input type="radio" name="q1" value="b"> Netscape</label>
+                <label><input type="radio" name="q1" value="c"> Google</label>
+            </div>
+        </div>
 
-<div class="container">
-    <h2>Available Coding Courses</h2>
-    <ul class="course-list">
-        <li>
-            <h3>Introduction to HTML</h3>
-            <p>Learn the basics of web development with HTML and CSS. Perfect for beginners.</p>
-            <a href="material/html.pdf" target="_blank">Start Learning</a>
-        </li>
-        <li>
-            <h3>Introduction to CSS</h3>
-            <p>Learn the basics of web development with HTML and CSS. Perfect for beginners.</p>
-            <a href="material/css.pdf" target="_blank">Start Learning</a>
-        </li>
-        <li>
-            <h3>JavaScript Fundamentals</h3>
-            <p>Understand the core concepts of JavaScript, from variables to loops and functions.</p>
-            <a href="material/javascript.pdf" target="_blank">Start Learning</a>
-        </li>
-        <li>
-            <h3>Python for Beginners</h3>
-            <p>Start your journey with Python programming with an easy-to-follow guide for beginners.</p>
-            <a href="material/Python Crash Course.pdf" target="_blank">Start Learning</a>
-        </li>
-        <li>
-            
+        <div class="question">
+            <h3>2. What is the correct syntax for referring to an external script called "xxx.js"?</h3>
+            <div class="options">
+                <label><input type="radio" name="q2" value="a"> &lt;script href="xxx.js"&gt;</label>
+                <label><input type="radio" name="q2" value="b"> &lt;script name="xxx.js"&gt;</label>
+                <label><input type="radio" name="q2" value="c"> &lt;script src="xxx.js"&gt;</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>3. How do you write "Hello World" in an alert box?</h3>
+            <div class="options">
+                <label><input type="radio" name="q3" value="a"> msg("Hello World");</label>
+                <label><input type="radio" name="q3" value="b"> alert("Hello World");</label>
+                <label><input type="radio" name="q3" value="c"> msgBox("Hello World");</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>4. How do you create a function in JavaScript?</h3>
+            <div class="options">
+                <label><input type="radio" name="q4" value="a"> function = myFunction()</label>
+                <label><input type="radio" name="q4" value="b"> function myFunction()</label>
+                <label><input type="radio" name="q4" value="c"> function:myFunction()</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>5. How do you call a function named "myFunction"?</h3>
+            <div class="options">
+                <label><input type="radio" name="q5" value="a"> call myFunction()</label>
+                <label><input type="radio" name="q5" value="b"> call function myFunction()</label>
+                <label><input type="radio" name="q5" value="c"> myFunction()</label>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button type="submit">Result</button>
+        </div>
+    </form>
+</div>
+<script>
+    document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const score = calculateScore();
+        const date = formatDate(new Date());
+
+        let quizResults = JSON.parse(localStorage.getItem('quizResults')) || [];
+        quizResults.push({ date: date, subject: 'JavaScript Quiz', score: score });
+        localStorage.setItem('quizResults', JSON.stringify(quizResults));
+
+        this.submit();
+    });
+
+    function calculateScore() {
+        const correctAnswers = ['b', 'c', 'b', 'b', 'c'];
+        let score = 0;
+        correctAnswers.forEach((answer, index) => {
+            const userAnswer = document.querySelector(`input[name=q${index + 1}]:checked`);
+            if (userAnswer && userAnswer.value === answer) {
+                score += 1;
+            }
+        });
+        return (score / correctAnswers.length) * 100;
+    }
+
+    function formatDate(date) {
+        const options = { month: 'long', day: 'numeric', year: 'numeric'};
+        return date.toLocaleDateString('en-US', options);
+    }
+</script>
+</body>
+</html>
